@@ -1,12 +1,6 @@
 import { MemoItem } from "./MemoItem";
 
-export const Sidebar = ({
-  memoData,
-  setTitle,
-  setText,
-  setMemoId,
-  setMemoData,
-}) => {
+export const Sidebar = ({ setTitle, setText, setMemoId, state, dispatch }) => {
   return (
     <div
       style={{
@@ -16,7 +10,7 @@ export const Sidebar = ({
         overflow: "scroll",
       }}
     >
-      {memoData.map((memo) => (
+      {state.memoData.map((memo) => (
         <MemoItem
           key={memo.id}
           id={memo.id}
@@ -26,7 +20,7 @@ export const Sidebar = ({
           setTitle={setTitle}
           setText={setText}
           setMemoId={setMemoId}
-          setMemoData={setMemoData}
+          dispatch={dispatch}
         />
       ))}
     </div>

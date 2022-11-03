@@ -8,7 +8,7 @@ export const MemoItem = ({
   setTitle,
   setText,
   setMemoId,
-  setMemoData,
+  dispatch,
 }) => {
   // edit
   const clickMemoItem = () => {
@@ -19,9 +19,7 @@ export const MemoItem = ({
 
   // delete
   const clickDeleteHandler = () => {
-    setMemoData((prevList) => {
-      return prevList.filter((memoData) => memoData.id !== id);
-    });
+    dispatch({ type: "DELETE_DATA", payload: { id } });
     setTitle("");
     setText("");
     setMemoId(0);

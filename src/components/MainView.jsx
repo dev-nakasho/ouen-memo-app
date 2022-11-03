@@ -1,14 +1,13 @@
 import { Button } from "./common/Button";
 
 export const MainView = ({
-  // dispatch,
   title,
   setTitle,
   text,
   setText,
   memoId,
   setMemoId,
-  setMemoData,
+  dispatch,
 }) => {
   const getRegistDate = () => {
     // return "yyyy-mm"
@@ -24,29 +23,23 @@ export const MainView = ({
 
   const clickHandler = () => {
     if (memoId === 0) {
-      setMemoData((prevList) => {
-        return [
-          ...prevList,
-          {
-            id: prevList.length + 1,
-            title,
-            text,
-            registed: getRegistDate(),
-          },
-        ];
+      dispatch({
+        type: "INSERT_DATA",
+        payload: {
+          title,
+          text,
+          registed: getRegistDate(),
+        },
       });
     } else {
-      setMemoData((prevList) => {
-        return prevList.map((memoData) => {
-          return memoData.id === memoId
-            ? {
-                ...memoData,
-                title,
-                text,
-                registed: getRegistDate(),
-              }
-            : { ...memoData };
-        });
+      dispatch({
+        type: "UPDATE_DATA",
+        payload: {
+          id: memoId,
+          title,
+          text,
+          registed: getRegistDate(),
+        },
       });
     }
     setTitle("");
