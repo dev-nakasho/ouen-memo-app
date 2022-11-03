@@ -1,7 +1,12 @@
-import MemoItem from "./MemoItem";
-import { connect } from "react-redux";
+import { MemoItem } from "./MemoItem";
 
-const Sidebar = ({ memoData, setTitle, setText, setMemoId }) => {
+export const Sidebar = ({
+  memoData,
+  setTitle,
+  setText,
+  setMemoId,
+  setMemoData,
+}) => {
   return (
     <div
       style={{
@@ -21,14 +26,9 @@ const Sidebar = ({ memoData, setTitle, setText, setMemoId }) => {
           setTitle={setTitle}
           setText={setText}
           setMemoId={setMemoId}
+          setMemoData={setMemoData}
         />
       ))}
     </div>
   );
 };
-
-const mapStateToProps = (state) => {
-  return { memoData: [...state.memoData] };
-};
-
-export default connect(mapStateToProps)(Sidebar);

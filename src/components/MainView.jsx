@@ -1,15 +1,14 @@
-// import { useState } from "react";
 import { Button } from "./common/Button";
-import { connect } from "react-redux";
 
-const MainView = ({
-  dispatch,
+export const MainView = ({
+  // dispatch,
   title,
   setTitle,
   text,
   setText,
   memoId,
   setMemoId,
+  setMemoData,
 }) => {
   const getRegistDate = () => {
     // return "yyyy-mm"
@@ -25,18 +24,29 @@ const MainView = ({
 
   const clickHandler = () => {
     if (memoId === 0) {
-      dispatch({
-        type: "INSERT_DATA",
-        payload: {
-          memoData: { title, text, registed: getRegistDate() },
-        },
+      setMemoData((prevList) => {
+        return [
+          ...prevList,
+          {
+            id: prevList.length + 1,
+            title,
+            text,
+            registed: getRegistDate(),
+          },
+        ];
       });
     } else {
-      dispatch({
-        type: "UPDATE_DATA",
-        payload: {
-          memoData: { id: memoId, title, text, registed: getRegistDate() },
-        },
+      setMemoData((prevList) => {
+        return prevList.map((memoData) => {
+          return memoData.id === memoId
+            ? {
+                ...memoData,
+                title,
+                text,
+                registed: getRegistDate(),
+              }
+            : { ...memoData };
+        });
       });
     }
     setTitle("");
@@ -135,9 +145,3 @@ const MainView = ({
     </>
   );
 };
-
-const mapStateToProps = (state) => {
-  return { memoData: [...state.memoData] };
-};
-
-export default connect(mapStateToProps)(MainView);

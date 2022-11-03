@@ -1,24 +1,27 @@
 import { Button } from "./common/Button";
-import { connect } from "react-redux";
 
-const MemoItem = ({
+export const MemoItem = ({
   id,
   title,
   text,
   registed,
-  dispatch,
   setTitle,
   setText,
   setMemoId,
+  setMemoData,
 }) => {
+  // edit
   const clickMemoItem = () => {
     setTitle(title);
     setText(text);
     setMemoId(id);
   };
 
+  // delete
   const clickDeleteHandler = () => {
-    dispatch({ type: "DELETE_DATA", payload: { id } });
+    setMemoData((prevList) => {
+      return prevList.filter((memoData) => memoData.id !== id);
+    });
     setTitle("");
     setText("");
     setMemoId(0);
@@ -71,17 +74,8 @@ const MemoItem = ({
           alignItems: "center",
         }}
       >
-        <Button
-          title="X"
-          clickHandler={() => clickDeleteHandler()} // redux の値を削除
-        />
+        <Button title="X" clickHandler={() => clickDeleteHandler()} />
       </div>
     </div>
   );
 };
-
-const mapStateToProps = (state) => {
-  return { memoData: [...state.memoData] };
-};
-
-export default connect(mapStateToProps)(MemoItem);
