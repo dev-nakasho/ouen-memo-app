@@ -5,26 +5,19 @@ export const MemoItem = ({
   title,
   text,
   registed,
-  setTitle,
-  setText,
-  setMemoId,
   setMemoData,
+  dispatch,
 }) => {
   // edit
-  const clickMemoItem = () => {
-    setTitle(title);
-    setText(text);
-    setMemoId(id);
-  };
+  const clickMemoItem = () =>
+    dispatch({ type: "UPDATE_MEMO", payload: { memoId: id, title, text } });
 
   // delete
   const clickDeleteHandler = () => {
     setMemoData((prevList) => {
       return prevList.filter((memoData) => memoData.id !== id);
     });
-    setTitle("");
-    setText("");
-    setMemoId(0);
+    dispatch({ type: "CLEAR_DATA" });
   };
 
   return (

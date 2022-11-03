@@ -1,15 +1,6 @@
 import { Button } from "./common/Button";
 
-export const MainView = ({
-  // dispatch,
-  title,
-  setTitle,
-  text,
-  setText,
-  memoId,
-  setMemoId,
-  setMemoData,
-}) => {
+export const MainView = ({ state, dispatch, setMemoData }) => {
   const getRegistDate = () => {
     // return "yyyy-mm"
     const date = new Date();
@@ -23,14 +14,14 @@ export const MainView = ({
   };
 
   const clickHandler = () => {
-    if (memoId === 0) {
+    if (state.memoId === 0) {
       setMemoData((prevList) => {
         return [
           ...prevList,
           {
             id: prevList.length + 1,
-            title,
-            text,
+            title: state.title,
+            text: state.text,
             registed: getRegistDate(),
           },
         ];
@@ -38,27 +29,21 @@ export const MainView = ({
     } else {
       setMemoData((prevList) => {
         return prevList.map((memoData) => {
-          return memoData.id === memoId
+          return memoData.id === state.memoId
             ? {
                 ...memoData,
-                title,
-                text,
+                title: state.title,
+                text: state.text,
                 registed: getRegistDate(),
               }
             : { ...memoData };
         });
       });
     }
-    setTitle("");
-    setText("");
-    setMemoId(0);
+    dispatch({ type: "CLEAR_DATA" });
   };
 
-  const clickCancel = () => {
-    setTitle("");
-    setText("");
-    setMemoId(0);
-  };
+  const clickCancel = () => dispatch({ type: "CLEAR_DATA" });
 
   return (
     <>
@@ -74,8 +59,13 @@ export const MainView = ({
           </h3>
           <input
             type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={state.title}
+            onChange={(e) =>
+              dispatch({
+                type: "UPDATE_TITLE",
+                payload: { title: e.target.value },
+              })
+            }
             style={{
               width: "100%",
               padding: "8px",
@@ -97,8 +87,13 @@ export const MainView = ({
             Memo
           </h3>
           <textarea
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            value={state.text}
+            onChange={(e) =>
+              dispatch({
+                type: "UPDATE_TEXT",
+                payload: { text: e.target.value },
+              })
+            }
             style={{
               width: "100%",
               height: "56vh",
@@ -135,8 +130,8 @@ export const MainView = ({
             }}
           >
             <Button
-              title={memoId === 0 ? "保存" : "更新"}
-              disabled={title === "" || text === ""}
+              title={state.memoId === 0 ? "保存" : "更新"}
+              disabled={state.title === "" || state.text === ""}
               clickHandler={() => clickHandler()}
             />
           </div>

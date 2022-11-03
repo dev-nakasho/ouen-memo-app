@@ -1,12 +1,6 @@
 import { MemoItem } from "./MemoItem";
 
-export const Sidebar = ({
-  memoData,
-  setTitle,
-  setText,
-  setMemoId,
-  setMemoData,
-}) => {
+export const Sidebar = ({ dispatch, memoData, setMemoData }) => {
   return (
     <div
       style={{
@@ -23,10 +17,8 @@ export const Sidebar = ({
           title={memo.title}
           text={memo.text}
           registed={memo.registed}
-          setTitle={setTitle}
-          setText={setText}
-          setMemoId={setMemoId}
           setMemoData={setMemoData}
+          dispatch={dispatch}
         />
       ))}
     </div>

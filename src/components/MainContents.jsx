@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import { MainView } from "./MainView";
+import { initialState, memoReducer } from "./reducer/memoReducer";
 import { Sidebar } from "./Sidebar";
 
 export const MainContents = () => {
-  const [memoId, setMemoId] = useState(0);
-  const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
+  const [state, dispatch] = useReducer(memoReducer, initialState);
 
   const [memoData, setMemoData] = useState([
     {
@@ -37,21 +36,11 @@ export const MainContents = () => {
       }}
     >
       <Sidebar
-        setTitle={setTitle}
-        setText={setText}
-        setMemoId={setMemoId}
+        dispatch={dispatch}
         memoData={memoData}
         setMemoData={setMemoData}
       />
-      <MainView
-        title={title}
-        setTitle={setTitle}
-        text={text}
-        setText={setText}
-        memoId={memoId}
-        setMemoId={setMemoId}
-        setMemoData={setMemoData}
-      />
+      <MainView state={state} dispatch={dispatch} setMemoData={setMemoData} />
     </div>
   );
 };
