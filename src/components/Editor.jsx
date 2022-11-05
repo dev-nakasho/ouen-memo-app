@@ -71,7 +71,7 @@ export const MainView = ({ state, dispatch, setMemoData }) => {
               width: "100%",
               padding: "8px",
               boxSizing: "border-box",
-              fontSize: "24px",
+              fontSize: "20px",
               border: "1px solid #ddd",
               fontWeight: "normal",
               color: "#777",
@@ -100,12 +100,13 @@ export const MainView = ({ state, dispatch, setMemoData }) => {
             style={{
               color: "#777",
               fontWeight: "normal",
-              fontSize: "24px",
+              fontSize: "16px",
               border: "1px solid #ddd",
               padding: "8px",
               width: "100%",
               height: "56vh",
               boxSizing: "border-box",
+              lineHeight: "1.5em",
             }}
           ></textarea>
         </div>
