@@ -3,7 +3,7 @@ import { MainView } from "./MainView";
 import { initialState, memoReducer } from "./reducer/memoReducer";
 import { Sidebar } from "./Sidebar";
 
-export const MainContents = () => {
+export const Contents = () => {
   const [state, dispatch] = useReducer(memoReducer, initialState);
 
   const [memoData, setMemoData] = useState([
@@ -32,7 +32,6 @@ export const MainContents = () => {
       style={{
         width: "100%",
         display: "flex",
-        height: "100vh",
       }}
     >
       <Sidebar
