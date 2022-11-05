@@ -1,5 +1,5 @@
 import { Header } from "./Header";
-import { MainContents } from "./MainContents";
+import { Contents } from "./Contents";
 import { Footer } from "./Footer";
 
 export const Main = () => {
@@ -8,12 +8,12 @@ export const Main = () => {
       style={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
+        // justifyContent: "space-between",
         height: "100vh",
       }}
     >
       <Header />
-      <MainContents />
+      <Contents />
       <Footer />
     </div>
   );
