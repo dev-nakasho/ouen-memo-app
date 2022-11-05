@@ -1,5 +1,5 @@
 import { useReducer, useState } from "react";
-import { MainView } from "./MainView";
+import { MainView } from "./Editor";
 import { initialState, memoReducer } from "./reducer/memoReducer";
 import { Sidebar } from "./Sidebar";
 
