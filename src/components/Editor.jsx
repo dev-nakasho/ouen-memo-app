@@ -48,6 +48,7 @@ export const MainView = ({ state, dispatch, setMemoData }) => {
   return (
     <>
       <div style={{ padding: "24px", width: "80%" }}>
+        {/* title */}
         <div>
           <h3
             style={{
@@ -77,6 +78,8 @@ export const MainView = ({ state, dispatch, setMemoData }) => {
             }}
           />
         </div>
+
+        {/* textarea */}
         <div style={{ paddingTop: "16px" }}>
           <h3
             style={{
@@ -95,45 +98,38 @@ export const MainView = ({ state, dispatch, setMemoData }) => {
               })
             }
             style={{
-              width: "100%",
-              height: "56vh",
+              color: "#777",
+              fontWeight: "normal",
               fontSize: "24px",
               border: "1px solid #ddd",
               padding: "8px",
+              width: "100%",
+              height: "56vh",
               boxSizing: "border-box",
-              fontWeight: "normal",
-              color: "#777",
             }}
           ></textarea>
         </div>
+
+        {/* handle button */}
         <div
           style={{
             display: "flex",
-            height: "48px",
+            height: "56px",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
-            <Button title="キャンセル" clickHandler={() => clickCancel()} />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
-            <Button
-              title={state.memoId === 0 ? "保存" : "更新"}
-              disabled={state.title === "" || state.text === ""}
-              clickHandler={() => clickHandler()}
-            />
-          </div>
+          <Button
+            title="キャンセル"
+            clickHandler={() => clickCancel()}
+            buttonTextColor="#999"
+            isBorder={true}
+          />
+          <Button
+            title={state.memoId === 0 ? "保存" : "更新"}
+            disabled={state.title === "" || state.text === ""}
+            clickHandler={() => clickHandler()}
+            buttonTextColor="#999"
+            isBorder={true}
+          />
         </div>
       </div>
     </>
