@@ -4,10 +4,10 @@ export const Sidebar = ({ dispatch, memoData, setMemoData }) => {
   return (
     <div
       style={{
-        borderRight: "1px solid #ddd",
-        width: "20%",
+        width: "25%",
         height: "calc(100vh - 112px)",
         overflow: "scroll",
+        overflowX: "hidden",
       }}
     >
       {memoData.map((memo) => (
