@@ -24,51 +24,39 @@ export const MemoItem = ({
     <div
       style={{
         display: "flex",
-        justifyContent: "space-between",
         width: "100%",
         height: "96px",
         fontSize: "14px",
         paddingLeft: "16px",
-        paddingRight: "8px",
         boxSizing: "border-box",
         borderBottom: "1px solid #ddd",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-        }}
-      >
+      <div style={{ width: "100%" }}>
         <button
           style={{
+            width: "100%",
+            height: "100%",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            height: "100%",
             border: "none",
             cursor: "pointer",
             backgroundColor: "#fff",
           }}
           onClick={() => clickMemoItem()}
         >
-          <p style={{ fontSize: "16px", color: "#666" }}>{title}</p>
-          <p style={{ color: "#888" }}>
-            {text.length < 10 ? text : text.slice(0, 8) + " ・・・"}
+          {/* title */}
+          <p style={{ fontSize: "16px", color: "#666", lineHeight: "2em" }}>
+            {title.length < 10 ? title : title.slice(0, 9) + "・・・"}
           </p>
-          <p style={{ fontSize: "12px", color: "#ccc" }}>{registed}</p>
+          {/* registed */}
+          <p style={{ fontSize: "12px", color: "#ccc", lineHeight: "2em" }}>
+            {registed}
+          </p>
         </button>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Button title="X" clickHandler={() => clickDeleteHandler()} />
-      </div>
+      <Button title="X" clickHandler={() => clickDeleteHandler()} />
     </div>
   );
 };
