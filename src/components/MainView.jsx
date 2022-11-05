@@ -123,7 +123,6 @@ export const MainView = ({ state, dispatch, setMemoData }) => {
           </div>
           <div
             style={{
-              paddingRight: "8px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
