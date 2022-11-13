@@ -5,26 +5,29 @@ export const MemoItem = ({
   title,
   text,
   registed,
-  setMemoData,
+  setMemoList,
   dispatch,
 }) => {
   // edit
   const clickMemoItem = () =>
-    dispatch({ type: "UPDATE_MEMO", payload: { memoId: id, title, text } });
+    dispatch({
+      type: "UPDATE_MEMO_DATA",
+      payload: { memoId: id, title, text },
+    });
 
   // delete
   const clickDeleteHandler = () => {
-    setMemoData((prevList) => {
-      return prevList.filter((memoData) => memoData.id !== id);
+    setMemoList((prevList) => {
+      return prevList.filter((prevMemo) => prevMemo.id !== id);
     });
-    dispatch({ type: "CLEAR_DATA" });
+    dispatch({ type: "CLEAR_MEMO_DATA" });
   };
 
   return (
     <div
       style={{
         display: "flex",
-        width: "100%",
+        // width: "100%",
         height: "96px",
         fontSize: "14px",
         paddingLeft: "16px",

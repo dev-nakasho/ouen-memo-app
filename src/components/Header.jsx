@@ -2,9 +2,6 @@ export const Header = () => {
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
         borderBottom: "1px dotted #ddd",
         height: "56px",
         lineHeight: "56px",

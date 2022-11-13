@@ -1,6 +1,6 @@
 import { MemoItem } from "./MemoItem";
 
-export const Sidebar = ({ dispatch, memoData, setMemoData }) => {
+export const Sidebar = ({ dispatch, memoList, setMemoList }) => {
   return (
     <div
       style={{
@@ -10,14 +10,14 @@ export const Sidebar = ({ dispatch, memoData, setMemoData }) => {
         overflowX: "hidden",
       }}
     >
-      {memoData.map((memo) => (
+      {memoList.map((memoData) => (
         <MemoItem
-          key={memo.id}
-          id={memo.id}
-          title={memo.title}
-          text={memo.text}
-          registed={memo.registed}
-          setMemoData={setMemoData}
+          key={memoData.id}
+          id={memoData.id}
+          title={memoData.title}
+          text={memoData.text}
+          registed={memoData.registed}
+          setMemoList={setMemoList}
           dispatch={dispatch}
         />
       ))}

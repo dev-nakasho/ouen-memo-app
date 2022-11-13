@@ -1,8 +1,8 @@
 import { Button } from "./common/Button";
 
-export const MainView = ({ state, dispatch, setMemoData }) => {
+export const Editor = ({ state, dispatch, setMemoList }) => {
   const getRegistDate = () => {
-    // return "yyyy-mm"
+    // return "yyyy-mm-dd"
     const date = new Date();
     return (
       String(date.getFullYear()) +
@@ -13,9 +13,9 @@ export const MainView = ({ state, dispatch, setMemoData }) => {
     );
   };
 
-  const clickHandler = () => {
+  const clickSave = () => {
     if (state.memoId === 0) {
-      setMemoData((prevList) => {
+      setMemoList((prevList) => {
         return [
           ...prevList,
           {
@@ -27,7 +27,7 @@ export const MainView = ({ state, dispatch, setMemoData }) => {
         ];
       });
     } else {
-      setMemoData((prevList) => {
+      setMemoList((prevList) => {
         return prevList.map((memoData) => {
           return memoData.id === state.memoId
             ? {
@@ -40,14 +40,14 @@ export const MainView = ({ state, dispatch, setMemoData }) => {
         });
       });
     }
-    dispatch({ type: "CLEAR_DATA" });
+    dispatch({ type: "CLEAR_MEMO_DATA" });
   };
 
-  const clickCancel = () => dispatch({ type: "CLEAR_DATA" });
+  const clickCancel = () => dispatch({ type: "CLEAR_MEMO_DATA" });
 
   return (
     <>
-      <div style={{ padding: "24px", width: "80%" }}>
+      <div style={{ padding: "24px", width: "75%" }}>
         {/* title */}
         <div>
           <h3
@@ -73,7 +73,6 @@ export const MainView = ({ state, dispatch, setMemoData }) => {
               boxSizing: "border-box",
               fontSize: "20px",
               border: "1px solid #ddd",
-              fontWeight: "normal",
               color: "#777",
             }}
           />
@@ -99,7 +98,6 @@ export const MainView = ({ state, dispatch, setMemoData }) => {
             }
             style={{
               color: "#777",
-              fontWeight: "normal",
               fontSize: "16px",
               border: "1px solid #ddd",
               padding: "8px",
@@ -127,7 +125,7 @@ export const MainView = ({ state, dispatch, setMemoData }) => {
           <Button
             title={state.memoId === 0 ? "保存" : "更新"}
             disabled={state.title === "" || state.text === ""}
-            clickHandler={() => clickHandler()}
+            clickHandler={() => clickSave()}
             buttonTextColor="#999"
             isBorder={true}
           />

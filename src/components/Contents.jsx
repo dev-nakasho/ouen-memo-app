@@ -1,12 +1,12 @@
 import { useReducer, useState } from "react";
-import { MainView } from "./Editor";
+import { Editor } from "./Editor";
 import { initialState, memoReducer } from "./reducer/memoReducer";
 import { Sidebar } from "./Sidebar";
 
 export const Contents = () => {
   const [state, dispatch] = useReducer(memoReducer, initialState);
 
-  const [memoData, setMemoData] = useState([
+  const [memoList, setMemoList] = useState([
     {
       id: 1,
       title: "本日のタスク",
@@ -36,10 +36,10 @@ export const Contents = () => {
     >
       <Sidebar
         dispatch={dispatch}
-        memoData={memoData}
-        setMemoData={setMemoData}
+        memoList={memoList}
+        setMemoList={setMemoList}
       />
-      <MainView state={state} dispatch={dispatch} setMemoData={setMemoData} />
+      <Editor state={state} dispatch={dispatch} setMemoList={setMemoList} />
     </div>
   );
 };

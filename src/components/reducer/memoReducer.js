@@ -10,9 +10,9 @@ export const memoReducer = (state, action) => {
       return { ...state, title: action.payload.title };
     case "UPDATE_TEXT":
       return { ...state, text: action.payload.text };
-    case "UPDATE_MEMO":
+    case "UPDATE_MEMO_DATA":
       return { ...action.payload };
-    case "CLEAR_DATA":
+    case "CLEAR_MEMO_DATA":
       return initialState;
     default:
       return initialState;
