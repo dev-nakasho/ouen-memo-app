@@ -6,10 +6,9 @@ export const Footer = () => {
         lineHeight: "56px",
         textAlign: "center",
         backgroundColor: "#efefef",
-        color: "#bbb",
       }}
     >
-      <p>&copy; Memo App 2022</p>
+      <p style={{ color: "#bbb" }}>&copy; Memo App 2022</p>
     </div>
   );
 };

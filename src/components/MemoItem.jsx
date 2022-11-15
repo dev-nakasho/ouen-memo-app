@@ -29,7 +29,7 @@ export const MemoItem = ({
         display: "flex",
         // width: "100%",
         height: "96px",
-        fontSize: "14px",
+        // fontSize: "14px",
         paddingLeft: "16px",
         boxSizing: "border-box",
         borderBottom: "1px solid #ddd",

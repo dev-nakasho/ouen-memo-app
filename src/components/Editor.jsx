@@ -9,7 +9,7 @@ export const Editor = ({ state, dispatch, setMemoList }) => {
       "-" +
       ("0" + String(date.getMonth() + 1)).slice(-2) +
       "-" +
-      String(date.getDate())
+      ("0" + String(date.getDate())).slice(-2)
     );
   };
 
