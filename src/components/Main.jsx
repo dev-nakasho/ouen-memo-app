@@ -6,8 +6,8 @@ export const Main = () => {
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
+        //        display: "flex",
+        //        flexDirection: "column",
         height: "100vh",
       }}
     >
