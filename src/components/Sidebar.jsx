@@ -1,4 +1,5 @@
 import { MemoItem } from "./MemoItem";
+import styles from "./Sidebar.module.scss";
 
 export const Sidebar = ({
   memoData,
@@ -8,14 +9,7 @@ export const Sidebar = ({
   setMemoData,
 }) => {
   return (
-    <div
-      style={{
-        borderRight: "1px solid #ddd",
-        width: "20%",
-        height: "calc(100vh - 112px)",
-        overflow: "scroll",
-      }}
-    >
+    <div className={styles.sidebar}>
       {memoData.map((memo) => (
         <MemoItem
           key={memo.id}

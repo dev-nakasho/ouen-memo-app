@@ -1,0 +1,25 @@
+@mixin baseButton() {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #bbb;
+  background-color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 4px 16px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button {
+  @include baseButton();
+  &:hover {
+    background-color: #eee;
+    color: #666;
+  }
+
+  &-isDisabled {
+    @include baseButton();
+    cursor: not-allowed;
+  }
+};

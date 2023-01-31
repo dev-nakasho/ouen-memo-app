@@ -1,6 +1,7 @@
 import { Button } from "./common/Button";
+import styles from "./PostArea.module.scss";
 
-export const MainView = ({
+export const PostArea = ({
   // dispatch,
   title,
   setTitle,
@@ -62,78 +63,29 @@ export const MainView = ({
 
   return (
     <>
-      <div style={{ padding: "24px", width: "80%" }}>
-        <div>
-          <h3
-            style={{
-              color: "#999",
-              fontWeight: "normal",
-            }}
-          >
-            Title
-          </h3>
+      <div className={styles.postArea}>
+        <div className={styles.titleWrapper}>
+          <h3 className={styles.title}>Title</h3>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            style={{
-              width: "100%",
-              padding: "8px",
-              boxSizing: "border-box",
-              fontSize: "24px",
-              border: "1px solid #ddd",
-              fontWeight: "normal",
-              color: "#777",
-            }}
+            className={styles.input}
           />
         </div>
-        <div style={{ paddingTop: "16px" }}>
-          <h3
-            style={{
-              color: "#999",
-              fontWeight: "normal",
-            }}
-          >
-            Memo
-          </h3>
+        <div className={styles.textAreaWrapper}>
+          <h3 className={styles.title}>Memo</h3>
           <textarea
             value={text}
             onChange={(e) => setText(e.target.value)}
-            style={{
-              width: "100%",
-              height: "56vh",
-              fontSize: "24px",
-              border: "1px solid #ddd",
-              padding: "8px",
-              boxSizing: "border-box",
-              fontWeight: "normal",
-              color: "#777",
-            }}
+            className={styles.textarea}
           ></textarea>
         </div>
-        <div
-          style={{
-            display: "flex",
-            height: "48px",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
+        <div className={styles.buttonWrapper}>
+          <div className={styles.cancelButton}>
             <Button title="キャンセル" clickHandler={() => clickCancel()} />
           </div>
-          <div
-            style={{
-              paddingRight: "8px",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
+          <div className={styles.saveButton}>
             <Button
               title={memoId === 0 ? "保存" : "更新"}
               disabled={title === "" || text === ""}

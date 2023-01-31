@@ -1,4 +1,5 @@
 import { Button } from "./common/Button";
+import styles from "./MemoItem.module.scss";
 
 export const MemoItem = ({
   id,
@@ -28,52 +29,17 @@ export const MemoItem = ({
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        width: "100%",
-        height: "96px",
-        fontSize: "14px",
-        paddingLeft: "16px",
-        paddingRight: "8px",
-        boxSizing: "border-box",
-        borderBottom: "1px solid #ddd",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-        }}
-      >
-        <button
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            height: "100%",
-            border: "none",
-            cursor: "pointer",
-            backgroundColor: "#fff",
-          }}
-          onClick={() => clickMemoItem()}
-        >
-          <p style={{ fontSize: "16px", color: "#666" }}>{title}</p>
-          <p style={{ color: "#888" }}>
+    <div className={styles.memoItem}>
+      <div className={styles.buttonWrapper}>
+        <button className={styles.selectButton} onClick={() => clickMemoItem()}>
+          <p className={styles.memoTitle}>{title}</p>
+          <p className={styles.memoText}>
             {text.length < 10 ? text : text.slice(0, 8) + " ・・・"}
           </p>
-          <p style={{ fontSize: "12px", color: "#ccc" }}>{registed}</p>
+          <p className={styles.memoRegisted}>{registed}</p>
         </button>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <div className={styles.deleteButtonWrapper}>
         <Button title="X" clickHandler={() => clickDeleteHandler()} />
       </div>
     </div>

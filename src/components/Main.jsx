@@ -1,17 +1,11 @@
 import { Header } from "./Header";
 import { MainContents } from "./MainContents";
 import { Footer } from "./Footer";
+import styles from "./Main.module.scss";
 
 export const Main = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        height: "100vh",
-      }}
-    >
+    <div className={styles.main}>
       <Header />
       <MainContents />
       <Footer />

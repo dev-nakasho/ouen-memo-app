@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { MainView } from "./MainView";
+import { PostArea } from "./PostArea";
 import { Sidebar } from "./Sidebar";
+import styles from "./MainContents.module.scss";
 
 export const MainContents = () => {
   const [memoId, setMemoId] = useState(0);
@@ -29,13 +30,7 @@ export const MainContents = () => {
   ]);
 
   return (
-    <div
-      style={{
-        width: "100%",
-        display: "flex",
-        height: "100vh",
-      }}
-    >
+    <div className={styles.mainContents}>
       <Sidebar
         setTitle={setTitle}
         setText={setText}
@@ -43,7 +38,7 @@ export const MainContents = () => {
         memoData={memoData}
         setMemoData={setMemoData}
       />
-      <MainView
+      <PostArea
         title={title}
         setTitle={setTitle}
         text={text}
