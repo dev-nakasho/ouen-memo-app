@@ -32,7 +32,9 @@ export const MemoItem = ({
     <div className={styles.memoItem}>
       <div className={styles.buttonWrapper}>
         <button className={styles.selectButton} onClick={() => clickMemoItem()}>
-          <p className={styles.memoTitle}>{title}</p>
+          <p className={styles.memoTitle}>
+            {title.length < 10 ? title : title.slice(0, 8) + " ・・・"}
+          </p>
           <p className={styles.memoText}>
             {text.length < 10 ? text : text.slice(0, 8) + " ・・・"}
           </p>
